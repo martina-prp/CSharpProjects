@@ -51,6 +51,7 @@ namespace MR0211_App1
             List<Person> NewPeople = People.OrderBy(person => person.Name.Length).Where(person => person.Age >= 18).ToList();
             PrintPeople(NewPeople);
         }
+
         static List<Person> ReadPeople()
         {
             List<Person> people = new List<Person>();
