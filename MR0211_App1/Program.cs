@@ -10,8 +10,9 @@ namespace MR0211_App1
     {
         static void Main(string[] args)
         {
-            Task1and2();
-            Task4();
+            //Task1and2();
+            //Task4();
+            Task5();
         }
 
         static void Task1and2()
@@ -50,6 +51,39 @@ namespace MR0211_App1
             People = ReadPeople();
             List<Person> NewPeople = People.OrderBy(person => person.Name.Length).Where(person => person.Age >= 18).ToList();
             PrintPeople(NewPeople);
+        }
+
+        static void Task5()
+        {
+            Academy Academy = new Academy();
+            int courseNumber, studentNumber;
+
+            do
+            {
+                Console.WriteLine("Enter the number of the courses!");
+            } while (!int.TryParse(Console.ReadLine(), out courseNumber));
+
+            for (int i = 0; i < courseNumber; i++)
+            {
+                Console.WriteLine("Enter course!");
+                string input = Console.ReadLine();
+                string[] data = input.Split(new string[] { "//" }, StringSplitOptions.None);
+                string courseName = data[0];
+                decimal courseDuration;
+                int courseCapacity;
+                bool durationInput = decimal.TryParse(data[1], out courseDuration);
+                bool capacityInput = int.TryParse(data[2], out courseCapacity);
+                if (!durationInput || !capacityInput)
+                {
+                    while (!decimal.TryParse(data[1], out courseDuration) || !int.TryParse(data[2], out courseCapacity))
+                    {
+                        Console.WriteLine("Enter valid values for duration or capacity!");
+                    }
+                }
+                Course course = new Course(courseName, courseCapacity, courseDuration);
+                Academy.AddCourse(course);
+
+            }
         }
 
         static List<Person> ReadPeople()
