@@ -10,9 +10,18 @@ namespace MR0211_App1
     {
         static void Main(string[] args)
         {
-            //Task1and2();
-            //Task4();
-            Task5();
+            int taskNumber;
+            do {
+                Console.WriteLine("Please, enter task number to be executed! (2, 4 or 5)");
+            } while (!int.TryParse(Console.ReadLine(), out taskNumber));
+
+            switch(taskNumber)
+            {
+                case 2: Task1and2(); break;
+                case 4: Task4(); break;
+                case 5: Task5(); break;
+                default: Console.WriteLine("Invalid task number! Select 2, 4 or 5!"); break;
+            }
         }
 
         static void Task1and2()
@@ -57,6 +66,7 @@ namespace MR0211_App1
         {
             Academy Academy = new Academy();
             int courseNumber, studentNumber;
+            string inputSignUps;
 
             do
             {
@@ -82,7 +92,6 @@ namespace MR0211_App1
                 }
                 Course course = new Course(courseName, courseCapacity, courseDuration);
                 Academy.AddCourse(course);
-
             }
 
             do
@@ -107,9 +116,50 @@ namespace MR0211_App1
                 }
                 Student student = new Student(studentName, studentAge);
                 Academy.AddStudent(student);
-
             }
 
+            do
+            {
+                Console.WriteLine("Enter signups (StudentId CourseId)");
+                inputSignUps = Console.ReadLine();
+                if (inputSignUps == "quit") break;
+                string[] data = inputSignUps.Split(' ');
+                int courseId, studentId;
+                
+                while(!int.TryParse(data[0], out studentId) || !int.TryParse(data[1], out courseId))
+                {
+                    Console.WriteLine("Invalid data! Enter numbers!");
+                    inputSignUps = Console.ReadLine();
+                    data = inputSignUps.Split(' ');
+                }
+
+                try
+                {
+                    Academy.SignUpStudentToCourse(studentId, courseId);
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Error " + e.Message);
+                }
+            } while (true);
+
+            Academy.PrintAcademy();
+
+            // Tests the method that search student(s) by name within the signed Students in a course.
+            // Because it is only for testing, the name is searched only in the first course. 
+            try
+            {
+                Console.WriteLine("Enter student name to be checked in the first course!");
+                string sName = Console.ReadLine();
+                Course c = Academy.Courses.Find(course => course.CourseId == 0);
+                List<Student> studentsFound = c.IsStudentExistingByName(sName);
+                foreach (Student student in studentsFound)
+                {
+                    Console.WriteLine(student);
+                }
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         static List<Person> ReadPeople()

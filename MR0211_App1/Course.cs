@@ -13,7 +13,7 @@ namespace MR0211_App1
         public int Capacity { get; set; }
         public string CourseName { get; set; }
         public decimal Duration { get; set; }
-        public List<int> SignedStudentsIds { get; set; }
+        public List<Student> SignedStudents { get; set; }
         public int CourseId { get; set; }
 
         public Course(string name, int capacity, decimal duration)
@@ -21,30 +21,47 @@ namespace MR0211_App1
             CourseName = name;
             Capacity = capacity;
             Duration = duration;
-            SignedStudentsIds = null;
+            SignedStudents = new List<Student>();
             CourseId = mCourseId;
             mCourseId++;
         }
 
         public override string ToString()
         {
-            return CourseName;
+            return String.Format("{0} - {1} hours", CourseName, Duration);
+        }
+
+        public List<Student> IsStudentExistingByName(string checkName)
+        {
+            List<Student> studentsFound = SignedStudents.FindAll(ss => ss.Name == checkName);
+            if (studentsFound.Count == 0)
+            {
+                throw new Exception(String.Format("Student {0} has not been found!", checkName));
+            }
+            return studentsFound;
         }
 
         public bool IsAlreadySigned(int studentId)
         {
-            bool isFound = SignedStudentsIds.Contains(studentId);
-            return isFound;
+            var isFound = SignedStudents.Find(st => st.StudentId == studentId);
+            if (isFound != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void AddStudentToCourse(int studentId)
+        public void AddStudentToCourse(Student student)
         {
-            if (!IsAlreadySigned(studentId)) {
-                if (SignedStudentsIds.Count + 1 >= Capacity)
+            if (!IsAlreadySigned(student.StudentId)) {
+                if (SignedStudents.Count + 1 > Capacity)
                 {
-                    throw new Exception("The course is full and the student can not be added to it!");
+                    throw new Exception(String.Format("Course {0} is full and the student can not be added to it!", CourseName));
                 }
-                SignedStudentsIds.Add(studentId);
+                SignedStudents.Add(student);
             }
             else
             {
@@ -52,10 +69,10 @@ namespace MR0211_App1
             }
         }
 
-        public void RemoveStudentFromCourse(int studentId)
+        public void RemoveStudentFromCourse(Student student)
         {
-            if (IsAlreadySigned(studentId)) {
-                SignedStudentsIds.Remove(studentId);
+            if (IsAlreadySigned(student.StudentId)) {
+                SignedStudents.Remove(student);
             }
             else
             {

@@ -17,32 +17,6 @@ namespace MR0211_App1
             Students = new List<Student>();
         }
 
-        public bool StudentExists(string studentName)
-        {
-            Student found = Students.Find(student => student.Name == studentName);
-            if (found is Student)
-            {
-                return true;
-            }
-            else
-            {
-                throw new Exception("The student does not exist in the Academy!");
-            }
-        }
-
-        public bool CourseExists(string courseName)
-        {
-            Course found = Courses.Find(course => course.CourseName == courseName);
-            if (found is Course)
-            {
-                return true;
-            }
-            else
-            {
-                throw new Exception("The course does not exist in the Academy!");
-            }
-        }
-
         public void AddCourse(Course newCourse)
         {
             Courses.Add(newCourse);
@@ -53,37 +27,82 @@ namespace MR0211_App1
             Students.Add(newStudent);
         }
 
-        public void SignUpStudentToCourse(Course course, Student student)
+        public void SignUpStudentToCourse(int studentId, int courseId)
         {
+            var existingCourse = Courses.Find(course => course.CourseId == courseId);
+            var existingStudent = Students.Find(student => student.StudentId == studentId);
             try
             {
-                if (StudentExists(student.Name) && CourseExists(course.CourseName))
+                if (existingCourse != null && existingStudent != null)
                 {
-                    if (student.SignedCourseId != null)
+                    if (existingStudent.SignedCourseId != null)
                     {
                         throw new Exception("The student is already signed up to a course!");
                     }
-                    course.AddStudentToCourse(student.StudentId);
-                    student.SignedCourseId = course.CourseId;
+                    existingCourse.AddStudentToCourse(existingStudent);
+                    existingStudent.SignedCourseId =courseId;
                 }
+                
+                if (existingCourse == null)
+                {
+                    throw new Exception("The Course does not exist!");
+                }
+
+                if (existingStudent == null)
+                {
+                    throw new Exception("The Student does not exist!");
+                }
+
             }catch(Exception e)
             {
-                Console.WriteLine("Error: {0}", e.Message);
+                Console.WriteLine(e.Message);
             }
         }
 
-        public void SignOutStudentFromCourse(Course course, Student student)
+        public void SignOutStudentFromCourse(int courseId, int studentId)
         {
+            var existingCourse = Courses.Find(course => course.CourseId == courseId);
+            var existingStudent = Students.Find(student => student.StudentId == studentId);
             try
             {
-                if (StudentExists(student.Name) && CourseExists(course.CourseName))
+                if (existingCourse != null && existingStudent != null)
                 {
-                    course.RemoveStudentFromCourse(student.StudentId);
-                    student.SignedCourseId = null;
+                    existingCourse.RemoveStudentFromCourse(existingStudent);
+                    existingStudent.SignedCourseId = null;
                 }
-            }catch(Exception e)
+
+                if (existingCourse == null)
+                {
+                    throw new Exception("The Course does not exist!");
+                }
+
+                if (existingStudent == null)
+                {
+                    throw new Exception("The Student does not exist!");
+                }
+            }
+            catch(Exception e)
             {
-                Console.WriteLine("Error: {0}", e.Message);
+                Console.WriteLine(e.Message);
+
+            }
+        }
+
+        public void PrintAcademy()
+        {
+            List<Course> sortedCourses = Courses.OrderBy(course => course.CourseName).ToList();
+
+            foreach(Course course in sortedCourses)
+            {
+                Console.WriteLine(course);
+                List<Student> courseStudents = Students
+                    .Where(student => course.SignedStudents.Contains(student))
+                    .OrderBy(student => student.Age)
+                    .ToList();
+                foreach(Student student in courseStudents)
+                {
+                    Console.WriteLine(String.Format("##{0}", student));
+                }
             }
         }
 
