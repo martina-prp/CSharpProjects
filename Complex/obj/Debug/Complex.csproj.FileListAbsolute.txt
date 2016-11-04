@@ -1,0 +1,6 @@
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\bin\Debug\Complex.exe.config
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\bin\Debug\Complex.exe
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\bin\Debug\Complex.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\obj\Debug\Complex.csprojResolveAssemblyReference.cache
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\obj\Debug\Complex.exe
+C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Complex\obj\Debug\Complex.pdb
