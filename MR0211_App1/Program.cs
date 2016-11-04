@@ -84,6 +84,32 @@ namespace MR0211_App1
                 Academy.AddCourse(course);
 
             }
+
+            do
+            {
+                Console.WriteLine("Enter the number of the students!");
+            } while (!int.TryParse(Console.ReadLine(), out studentNumber));
+
+            for (int i = 0; i < studentNumber; i++)
+            {
+                Console.WriteLine("Enter student!");
+                string input = Console.ReadLine();
+                string[] data = input.Split(new string[] { "//" }, StringSplitOptions.None);
+                string studentName = data[0];
+                int studentAge;
+                bool ageInput = int.TryParse(data[1], out studentAge);
+                if (!ageInput)
+                {
+                    while (!int.TryParse(Console.ReadLine(), out studentAge))
+                    {
+                        Console.WriteLine("Enter valid value for age!");
+                    }
+                }
+                Student student = new Student(studentName, studentAge);
+                Academy.AddStudent(student);
+
+            }
+
         }
 
         static List<Person> ReadPeople()

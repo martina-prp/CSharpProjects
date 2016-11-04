@@ -55,23 +55,35 @@ namespace MR0211_App1
 
         public void SignUpStudentToCourse(Course course, Student student)
         {
-            if (StudentExists(student.Name) && CourseExists(course.CourseName))
+            try
             {
-                if (student.SignedCourseId != null)
+                if (StudentExists(student.Name) && CourseExists(course.CourseName))
                 {
-                    throw new Exception("The student is already signed up to a course!");
+                    if (student.SignedCourseId != null)
+                    {
+                        throw new Exception("The student is already signed up to a course!");
+                    }
+                    course.AddStudentToCourse(student.StudentId);
+                    student.SignedCourseId = course.CourseId;
                 }
-                course.AddStudentToCourse(student.StudentId);
-                student.SignedCourseId = course.CourseId;
+            }catch(Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
             }
         }
 
         public void SignOutStudentFromCourse(Course course, Student student)
         {
-            if (StudentExists(student.Name) && CourseExists(course.CourseName))
+            try
             {
-                course.RemoveStudentFromCourse(student.StudentId);
-                student.SignedCourseId = null;
+                if (StudentExists(student.Name) && CourseExists(course.CourseName))
+                {
+                    course.RemoveStudentFromCourse(student.StudentId);
+                    student.SignedCourseId = null;
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
             }
         }
 

@@ -4,3 +4,9 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\MR0211_App1\b
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\MR0211_App1\obj\Debug\MR0211_App1.csprojResolveAssemblyReference.cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\MR0211_App1\obj\Debug\MR0211_App1.exe
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\MR0211_App1\obj\Debug\MR0211_App1.pdb
+D:\VS Solutions\CSharpProjects\MR0211_App1\bin\Debug\MR0211_App1.exe.config
+D:\VS Solutions\CSharpProjects\MR0211_App1\obj\Debug\MR0211_App1.exe
+D:\VS Solutions\CSharpProjects\MR0211_App1\obj\Debug\MR0211_App1.pdb
+D:\VS Solutions\CSharpProjects\MR0211_App1\bin\Debug\MR0211_App1.exe
+D:\VS Solutions\CSharpProjects\MR0211_App1\bin\Debug\MR0211_App1.pdb
+D:\VS Solutions\CSharpProjects\MR0211_App1\obj\Debug\MR0211_App1.csprojResolveAssemblyReference.cache
