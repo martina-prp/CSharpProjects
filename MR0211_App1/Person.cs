@@ -23,7 +23,7 @@ namespace MR0211_App1
             {
                 if (value <= 0)
                 {
-                    throw new Exception("The age can not be negative!!!");
+                    throw new PersonAgeException("The age can not be negative!!!");
                 }
                 age = value;
             }

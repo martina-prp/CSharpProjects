@@ -59,13 +59,13 @@ namespace MR0211_App1.Education
             if (!IsAlreadySigned(student.StudentId)) {
                 if (SignedStudents.Count + 1 > Capacity)
                 {
-                    throw new Exception(String.Format("Course {0} is full and the student can not be added to it!", CourseName));
+                    throw new InvalidOperationException(String.Format("Course {0} is full and the student can not be added to it!", CourseName));
                 }
                 SignedStudents.Add(student);
             }
             else
             {
-                throw new Exception("The student is already signed up for this course!");
+                throw new StudentIsBusy("The student is already signed up for this course!");
             }
         }
 
@@ -76,7 +76,7 @@ namespace MR0211_App1.Education
             }
             else
             {
-                throw new Exception("The student can not be removed because he is not signed up to this course!");
+                throw new InvalidOperationException("The student can not be removed because he is not signed up to this course!");
             }
         }
     }

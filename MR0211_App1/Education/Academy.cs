@@ -33,30 +33,37 @@ namespace MR0211_App1.Education
             var existingStudent = Students.Find(student => student.StudentId == studentId);
             try
             {
-                if (existingCourse != null && existingStudent != null)
+                if (existingStudent != null)
                 {
                     if (existingStudent.SignedCourseId != null)
                     {
-                        throw new Exception("The student is already signed up to a course!");
+                        throw new StudentIsBusy("The student is already signed up to a course!");
                     }
-                    existingCourse.AddStudentToCourse(existingStudent);
-                    existingStudent.SignedCourseId =courseId;
+                    if (existingCourse != null)
+                    {
+                        existingCourse.AddStudentToCourse(existingStudent);
+                        existingStudent.SignedCourseId = courseId;
+                    }
+                    else
+                    {
+                        throw new CourseNotFound("The Course does not exist!");
+                    }
                 }
-                
-                if (existingCourse == null)
+                else
                 {
-                    throw new Exception("The Course does not exist!");
+                    throw new StudentNotFound("The Student does not exist!");
                 }
 
-                if (existingStudent == null)
-                {
-                    throw new Exception("The Student does not exist!");
-                }
-
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
             }
+            catch (InvalidOperationException ioe)
+            {
+                Console.WriteLine(ioe.Message);
+            }
+            catch(StudentIsBusy sb)
+            {
+                Console.WriteLine(sb.Message);
+            }
+
         }
 
         public void SignOutStudentFromCourse(int courseId, int studentId)
@@ -65,26 +72,26 @@ namespace MR0211_App1.Education
             var existingStudent = Students.Find(student => student.StudentId == studentId);
             try
             {
-                if (existingCourse != null && existingStudent != null)
+                if (existingCourse != null)
                 {
-                    existingCourse.RemoveStudentFromCourse(existingStudent);
-                    existingStudent.SignedCourseId = null;
+                    if (existingStudent != null)
+                    {
+                        existingCourse.RemoveStudentFromCourse(existingStudent);
+                        existingStudent.SignedCourseId = null;
+                    }
+                    else
+                    {
+                        throw new StudentNotFound("The Student does not exist!");
+                    }
                 }
-
-                if (existingCourse == null)
+                else
                 {
-                    throw new Exception("The Course does not exist!");
-                }
-
-                if (existingStudent == null)
-                {
-                    throw new Exception("The Student does not exist!");
+                    throw new CourseNotFound("The Course does not exist!");
                 }
             }
-            catch(Exception e)
+            catch(InvalidOperationException ioe)
             {
-                Console.WriteLine(e.Message);
-
+                Console.WriteLine(ioe.Message);
             }
         }
 

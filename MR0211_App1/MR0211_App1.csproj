@@ -47,13 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseNotFound.cs" />
     <Compile Include="Education\Academy.cs" />
     <Compile Include="Education\Course.cs" />
     <Compile Include="Education\EducationHelper\AcademyHelper.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="PersonAgeException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Education\Student.cs" />
+    <Compile Include="StudentIsBusy.cs" />
+    <Compile Include="StudentNotFound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

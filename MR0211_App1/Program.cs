@@ -49,9 +49,13 @@ namespace MR0211_App1
                 Person2.PrintPerson();
                 Person3.PrintPerson();
             }
+            catch(PersonAgeException pax)
+            {
+                Console.WriteLine(pax.Message);
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception message: {0}", ex);
+                Console.WriteLine("Exception message: {0}", ex.Message);
             }
         }
 
@@ -67,7 +71,6 @@ namespace MR0211_App1
         {
             Academy Academy = new Academy();
             int courseNumber, studentNumber;
-            string inputSignUps;
 
             do
             {
@@ -122,7 +125,7 @@ namespace MR0211_App1
             do
             {
                 Console.WriteLine("Enter signups (StudentId CourseId)");
-                inputSignUps = Console.ReadLine();
+                string inputSignUps = Console.ReadLine();
                 if (inputSignUps == "quit") break;
                 string[] data = inputSignUps.Split(' ');
                 int courseId, studentId;
@@ -137,7 +140,16 @@ namespace MR0211_App1
                 try
                 {
                     Academy.SignUpStudentToCourse(studentId, courseId);
-                }catch(Exception e)
+                }
+                catch(StudentNotFound snf)
+                {
+                    Console.WriteLine("Error " + snf.Message);
+                }
+                catch(CourseNotFound cnf)
+                {
+                    Console.WriteLine("Error " + cnf.Message); 
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("Error " + e.Message);
                 }
