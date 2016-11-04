@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MR0211_App1
+namespace MR0211_App1.Education
 {
     class Student : Person
     {
