@@ -13,7 +13,7 @@ namespace MR0211_App1
         {
             int taskNumber;
             do {
-                Console.WriteLine("Please, enter task number to be executed! (2, 4 or 5)");
+                Console.WriteLine("Please, enter task number to be executed! (2, 4, 5 or 6)");
             } while (!int.TryParse(Console.ReadLine(), out taskNumber));
 
             switch(taskNumber)
@@ -21,7 +21,10 @@ namespace MR0211_App1
                 case 2: Task1and2(); break;
                 case 4: Task4(); break;
                 case 5: Task5(); break;
-                default: Console.WriteLine("Invalid task number! Select 2, 4 or 5!"); break;
+                case 6: Task6(); break;
+                default:
+                    Console.WriteLine("Invalid task number! Select 2, 4, 5 or 6!");
+                    break;
             }
         }
 
@@ -173,6 +176,37 @@ namespace MR0211_App1
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        static void Task6()
+        {
+            Academy Academy = new Academy();
+            int courseNumber, studentNumber;
+
+            do
+            {
+                Console.WriteLine("Enter the number of the courses!");
+            } while (!int.TryParse(Console.ReadLine(), out courseNumber));
+
+            for (int i = 0; i < courseNumber; i++)
+            {
+                Console.WriteLine("Enter course!");
+                string input = Console.ReadLine();
+                string[] data = input.Split(new string[] { "//" }, StringSplitOptions.None);
+                string courseName = data[0];
+                int courseCapacity;
+                bool capacityInput = int.TryParse(data[2], out courseCapacity);
+                if (!capacityInput)
+                {
+                    while (!int.TryParse(data[2], out courseCapacity))
+                    {
+                        Console.WriteLine("Enter valid value for capacity!");
+                    }
+                }
+                Course course = new Course(courseName, courseCapacity);
+                Academy.AddCourse(course);
+            }
+
         }
 
         static List<Person> ReadPeople()

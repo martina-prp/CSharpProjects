@@ -16,6 +16,12 @@ namespace MR0211_App1.Education
         public List<Student> SignedStudents { get; set; }
         public int CourseId { get; set; }
 
+        public Course(string name, int capacity)
+        {
+            CourseName = name;
+            Capacity = capacity;
+        }
+
         public Course(string name, int capacity, decimal duration)
         {
             CourseName = name;
