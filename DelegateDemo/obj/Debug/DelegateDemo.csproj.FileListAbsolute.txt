@@ -4,3 +4,6 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\DelegateDemo\
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\DelegateDemo\obj\Debug\DelegateDemo.csprojResolveAssemblyReference.cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\DelegateDemo\obj\Debug\DelegateDemo.exe
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\DelegateDemo\obj\Debug\DelegateDemo.pdb
+D:\VS Solutions\CSharpProjects\DelegateDemo\bin\Debug\DelegateDemo.exe.config
+D:\VS Solutions\CSharpProjects\DelegateDemo\obj\Debug\DelegateDemo.exe
+D:\VS Solutions\CSharpProjects\DelegateDemo\obj\Debug\DelegateDemo.pdb

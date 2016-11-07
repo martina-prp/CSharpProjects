@@ -10,6 +10,7 @@ namespace Sorter
     {
         protected int[] Array { get; set; }
         protected ILogger ILogger { get; set; }
+        protected SortType sortType;
 
         public Sorter(int[] arr, ILogger logger)
         {
@@ -21,12 +22,6 @@ namespace Sorter
             }
         }
 
-        //public void PrintArray(int[] array)
-        //{
-
-            //Console.WriteLine(String.Join(" ", array));
-        //}
-
-        abstract public int[] SorterMethod();
+        abstract public int[] Sorting();
     }
 }

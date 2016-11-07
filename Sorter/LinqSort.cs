@@ -10,10 +10,10 @@ namespace Sorter
     {
         public LinqSort(int[] arr, ILogger logger) : base(arr, logger)
         {
-
+            this.sortType = SortType.Linq;
         }
 
-        public override int[] SorterMethod()
+        public override int[] Sorting()
         {
             var sorted = this.Array.Select(element => element).ToArray();
             return sorted.OrderBy(element => element).ToArray();

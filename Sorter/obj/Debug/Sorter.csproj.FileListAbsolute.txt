@@ -4,3 +4,9 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Sorter\bin\De
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Sorter\obj\Debug\Sorter.csprojResolveAssemblyReference.cache
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Sorter\obj\Debug\Sorter.exe
 C:\Users\Student\Documents\Visual Studio 2015\Projects\MR0211_App1\Sorter\obj\Debug\Sorter.pdb
+D:\VS Solutions\CSharpProjects\Sorter\bin\Debug\Sorter.exe.config
+D:\VS Solutions\CSharpProjects\Sorter\obj\Debug\Sorter.exe
+D:\VS Solutions\CSharpProjects\Sorter\obj\Debug\Sorter.pdb
+D:\VS Solutions\CSharpProjects\Sorter\bin\Debug\Sorter.exe
+D:\VS Solutions\CSharpProjects\Sorter\bin\Debug\Sorter.pdb
+D:\VS Solutions\CSharpProjects\Sorter\obj\Debug\Sorter.csprojResolveAssemblyReference.cache

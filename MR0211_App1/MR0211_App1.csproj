@@ -51,6 +51,7 @@
     <Compile Include="Education\Academy.cs" />
     <Compile Include="Education\Course.cs" />
     <Compile Include="Education\EducationHelper\AcademyHelper.cs" />
+    <Compile Include="Education\Task.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonAgeException.cs" />
     <Compile Include="Program.cs" />

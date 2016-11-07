@@ -8,6 +8,7 @@ namespace Sorter
 {
         public enum SortType
         {
+            Default,
             Selection,
             Bubble,
             Linq

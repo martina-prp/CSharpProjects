@@ -14,25 +14,28 @@ namespace Sorter
             Console.WriteLine("Enter array elements!");
             var array = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
             Console.WriteLine("Enter Sort type (selection, bubble or linq): ");
-            //switch(Console.ReadLine().ToLower())
-            //{
-                    Sorter selectionSorter = new SelectionSort(array, logger);
-                    //if ()
-                    int[] selectionSortResult = selectionSorter.SorterMethod();
-                    logger.WriteLine("Selection Sort result: " + String.Join(",", selectionSortResult));
-                    //break;
-            //}
+            SortType sortType = SortType.Default;
+            switch(Console.ReadLine())
+            {
+                case "selection":
+                    sortType = SortType.Selection;
+                    break;
+                case "bubble":
+                    sortType = SortType.Bubble;
+                    break;
+                case "linq":
+                    sortType = SortType.Linq;
+                    break;
+                default:
+                    Console.WriteLine("Invalid sort type!");
+                    break;
+            }
+
+            Factory factory = new Factory();
+            Sorter executeSorter = factory.Create(array, logger, sortType);
             
-
-            
-
-            Sorter bubbleSorter = new BubbleSort(array, logger);
-            int[] bubbleSortResult = bubbleSorter.SorterMethod();
-            logger.WriteLine("Bubble Sort result: " + String.Join(",", bubbleSortResult));
-
-            Sorter linqSorter = new LinqSort(array, logger);
-            int[] linqSortResult = linqSorter.SorterMethod();
-            logger.WriteLine("LINQ Sort result: " + String.Join(", ", linqSortResult));
+            int[] sortResult = executeSorter.Sorting();
+            logger.WriteLine("Sort result: " + String.Join(",", sortResult));
         }
     }
 }

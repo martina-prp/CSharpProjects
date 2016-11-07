@@ -8,26 +8,12 @@ namespace Sorter
 {
     class SelectionSort : Sorter
     {
-        private SortType sortType;
-        public SortType SortType
-        {
-            get
-            {
-                return this.sortType;
-            }
-
-            protected set
-            {
-                this.sortType = SortType.Bubble;
-            }
-        }
-
         public SelectionSort(int[] arr, ILogger logger) : base(arr, logger)
         {
-
+            this.sortType = SortType.Selection;
         }
 
-        public override int[] SorterMethod()
+        public override int[] Sorting()
         {
             int[] sorted = new int[this.Array.Length];
             for (int i = 0; i < this.Array.Length; i++)

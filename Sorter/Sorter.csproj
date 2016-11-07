@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BubbleSort.cs" />
     <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="LinqSort.cs" />
     <Compile Include="SelectionSort.cs" />
