@@ -16,7 +16,14 @@ namespace MR0211_App1.Education
 
         public Student() : base()
         {
+            SignedCourseId = null;
             CompletedTasks = new List<Task>();
+        }
+
+        public Student(string name) : base(name)
+        {
+            StudentId = mStudentId;
+            mStudentId++;
         }
 
         public Student(string name, int age) : base(name, age)
